@@ -19,8 +19,8 @@ pipeline {
                 sh 'sonar-scanner'
             }
         }
-    }
-}
+    
+
 //         stage('Build') {
 //             steps {
 //                 sh 'ls -ltr'
@@ -48,12 +48,13 @@ pipeline {
 //         }
 
         
-//         stage('Deploy') {
-//             steps {
-//                 echo "Deployment"
-//             }
-//         }
-//     }
+        stage('Deploy') {
+            steps {
+                echo "Deployment"
+            }
+        }
+    }
+    }
 
 //     post{
 //         always{
