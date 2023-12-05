@@ -1,0 +1,20 @@
+// i need to refer that library here,
+#!groovy
+//@library('roboshop-library') before library.
+// here libraries will be downloaded and accessible at run time.
+@library('roboshop-shared-library') _ //referring here and underscore is library.
+NodeJSvmci
+//refer the parameters here.
+def configMap = [                //i am creating some parameters as a map and i am passing those parameters through pipeline
+    application: "NodeJSeks"  // it is vm based not now eks and we are migrating monolithic to microservice
+    component: : "catalogue"
+]
+// this is .groovy file name and function inside it
+//if not master branch trigger pipeline
+if ( ! env.BRANCH_NAME.equalsIgnorecase('master')){ //! means not if branch is master notequal to a master then trigger
+    pipelinedecision.decidepipeline(configMap)
+}
+
+else {
+    echo "master prod deployment should happen through CR"
+}
